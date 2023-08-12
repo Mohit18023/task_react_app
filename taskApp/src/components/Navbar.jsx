@@ -6,11 +6,27 @@ import {
   Text,
   Button,
   HStack,
+  useToast,
+  Avatar,
+  AvatarBadge
 } from "@chakra-ui/react";
 import { useColorMode, IconButton } from "@chakra-ui/react";
 import { FaSun, FaMoon } from "react-icons/fa";
+import { UnlockIcon } from '@chakra-ui/icons'
 
 export default function Navbar() {
+  const toast = useToast()
+  const showToast = () =>{
+    toast({
+      title: "Logged Out",
+      description: "Successfully logged out",
+      duration: 5000,
+      isClosable: true,
+      status: 'success',
+      position: 'top',
+      icon: <UnlockIcon />
+    });
+  }
   const { colorMode, toggleColorMode } = useColorMode();
   const isDark = colorMode === "dark";
   return (
@@ -24,11 +40,12 @@ export default function Navbar() {
           isRound="true"
           onClick={toggleColorMode}
         ></IconButton>
-        <Box bg="gray.200" p="10px" color="Black">
-          M
-        </Box>
-        {/* <Text>mohitchoudhary1054gmail.com</Text> */}
-        <Button bg="#7FDBCA" color="black">Logout</Button>
+        <Avatar name="Mohit" src="/img/mario.png">
+          <AvatarBadge width="1.3em" bg="#7fdbca" >
+            <Text fontSize='xs'>5</Text>
+          </AvatarBadge>
+        </Avatar>
+        <Button bg="#7FDBCA" color="black" onClick={showToast}>Logout</Button>
       </HStack>
     </Flex>
   );

@@ -13,6 +13,7 @@ import {
   Heading,
   SimpleGrid,
   Text,
+  Avatar
 } from "@chakra-ui/react";
 import { useLoaderData } from "react-router-dom";
 
@@ -25,9 +26,7 @@ export default function Dashboard() {
           <Card key={task.id}  borderTop="8px" borderColor="#7FDBCA">
             <CardHeader>
               <Flex gap={5}>
-                <Box w="50px" h="50px">
-                    <Text>AV</Text>
-                </Box>
+                <Avatar src={task.img} />
 
                 <Box>
                   <Heading as="h2" size="sm">{task.title}</Heading>
